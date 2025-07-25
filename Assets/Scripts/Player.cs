@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
 {
     private Rigidbody2D playerRigidBody;
 
+    public Animator playerAnimator;
+    public SpriteRenderer playerSpriteRenderer;
     public InputActionAsset inputActionsAsset;
 
     private InputAction moveAction;
@@ -21,6 +23,8 @@ public class Player : MonoBehaviour
 
     private bool isGrounded;
 
+    //private int logTimer=0;
+
     void Awake()
     {
         moveAction = inputActionsAsset.FindActionMap("Player").FindAction("Move");
@@ -32,8 +36,16 @@ public class Player : MonoBehaviour
         playerRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    void OnEnable() { moveAction.Enable(); }
-    void OnDisable() { moveAction.Disable(); }
+    void OnEnable()
+    {
+        moveAction.Enable();
+        jumpAction.Enable();
+    }
+    void OnDisable()
+    {
+        moveAction.Disable();
+        jumpAction.Disable();
+    }
 
     // Update is called once per frame
     void Update()
@@ -51,6 +63,39 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        playerRigidBody.linearVelocity = new Vector2(moveVector.x*moveSpeed, playerRigidBody.linearVelocity.y);
+        playerRigidBody.linearVelocity = new Vector2(moveVector.x*moveSpeed, moveVector.y*moveSpeed);
+        playerAnimator.SetFloat("Speed_X", Mathf.Abs(playerRigidBody.linearVelocity.x));
+        playerAnimator.SetFloat("Speed_Y", playerRigidBody.linearVelocity.y);
+
+        if(playerRigidBody.linearVelocity.magnitude<0.0001f)
+        {
+            playerAnimator.SetBool("Moving", false);
+        }
+        else
+        {
+            playerAnimator.SetBool("Moving", true);
+        }
+
+        if(playerRigidBody.linearVelocity.x>0)
+        {
+            playerSpriteRenderer.flipX=false;
+        }
+        else if(playerRigidBody.linearVelocity.x<0)
+        {
+            playerSpriteRenderer.flipX=true;
+        }
+        /*
+        if(logTimer>60)
+        {
+            Debug.Log($"Moving:{playerAnimator.GetBool("Moving")}");
+            Debug.Log($"Speed X:{playerAnimator.GetFloat("Speed_X")}");
+            Debug.Log($"Speed Y:{playerAnimator.GetFloat("Speed_Y")}");
+            logTimer = 0;
+        }
+        else
+        {
+            logTimer++;
+        }
+        */
     }
 }
