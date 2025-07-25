@@ -4,8 +4,6 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-// hello
-
 public class NPC : MonoBehaviour
 {
     public InputActionAsset inputActionsAsset;
