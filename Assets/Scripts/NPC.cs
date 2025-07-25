@@ -4,6 +4,8 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
+// hello
+
 public class NPC : MonoBehaviour
 {
     public InputActionAsset inputActionsAsset;
@@ -51,7 +53,7 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -60,23 +62,23 @@ public class NPC : MonoBehaviour
         dialogNextPressed = dialogNext.triggered;
         dialogPrevPressed = dialogPrev.triggered;
 
-        if(playerInArea)
+        if (playerInArea)
         {
-            if(dialogNextPressed)
+            if (dialogNextPressed)
             {
-                playerSelectedOption=(playerSelectedOption+1)%playerAvailableOptions;
+                playerSelectedOption = (playerSelectedOption + 1) % playerAvailableOptions;
                 updateOptionsList();
             }
-            if(dialogPrevPressed)
+            if (dialogPrevPressed)
             {
-                playerSelectedOption=(playerSelectedOption-1)%playerAvailableOptions;
+                playerSelectedOption = (playerSelectedOption - 1) % playerAvailableOptions;
                 updateOptionsList();
             }
-            if(dialogSelectPressed)
+            if (dialogSelectPressed)
             {
-                if(questStage==0)
+                if (questStage == 0)
                 {
-                    if(playerSelectedOption==0)
+                    if (playerSelectedOption == 0)
                     {
                         npcDialogText.SetText("Nice, find me some carrots and wheat :D");
 
@@ -95,9 +97,9 @@ public class NPC : MonoBehaviour
                         playerOptionsText.SetText(":(");
                     }
                 }
-                else if(questStage==1)
+                else if (questStage == 1)
                 {
-                    if(playerSelectedOption==0)
+                    if (playerSelectedOption == 0)
                     {
                         npcDialogText.SetText("Go to that island on my left");
 
@@ -117,9 +119,9 @@ public class NPC : MonoBehaviour
                         playerOptionsText.SetText("*smiles*");
                     }
                 }
-                else if(questStage==2)
+                else if (questStage == 2)
                 {
-                    if(playerSelectedOption==0)
+                    if (playerSelectedOption == 0)
                     {
                         npcDialogText.SetText("Have fun !!");
 
@@ -145,7 +147,7 @@ public class NPC : MonoBehaviour
 
         npcNameText.SetText("Dude");
 
-        if(questStage==0)
+        if (questStage == 0)
         {
             npcDialogText.SetText("Ay bro, can you help ?");
             dialogOptionsList.Clear();
@@ -168,10 +170,10 @@ public class NPC : MonoBehaviour
     void updateOptionsList()
     {
         int i = 0;
-        string options ="> ";
+        string options = "> ";
         foreach (string dialogString in dialogOptionsList)
         {
-            if(playerSelectedOption==i)
+            if (playerSelectedOption == i)
             {
                 options += $"<{dialogString}> ";
             }
