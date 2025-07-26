@@ -2,41 +2,64 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Animator animator;
+
     public int health = 50;
-    public bool showDestroy = false;
     public string objectType = "Unspecified";
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public bool destroyAnimationOver = false;
+    public bool destroyWithoutAnimation = false;
+
+    private bool ranOnce = false;
+
     void Start()
     {
-        showDestroy = false;
+        destroyAnimationOver = false;
+        ranOnce=false;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if(destroyAnimationOver)
+        {
+            DestroySelf();
+        }
 
     }
 
     public void TakeDamage(int damage, Player playerClass)
     {
-        //Debug.Log("Slime: Ouch");
+        Debug.Log($"{objectType}: Ouch");
         health -= damage;
         if (health <= 0)
         {
-            playerClass.AddInventory(objectType);
-            Die();
+            if(ranOnce==false)
+            {
+                playerClass.AddInventory(objectType);
+                Oof();
+                ranOnce = true;
+            }
         }
     }
-    void Die()
+    void Oof()
     {
-        // Handle death (destroy, play animation, etc.)
-        showDestroy = true;
-        DestroySelf();
+        Debug.Log($"{objectType}: Oof called");
+        if(destroyWithoutAnimation==true)
+        {
+            DestroySelf();
+        }
+        else
+        {
+            if(animator!=null)
+            {
+                animator.SetTrigger("Destroy");
+            }
+        }
     }
 
     void DestroySelf()
     {
+        Debug.Log($"{objectType}: Destroying");
         Destroy(gameObject);
     }
 }
