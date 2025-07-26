@@ -1,7 +1,7 @@
 # 🕹️ SimpleRPG
 
 Welcome to **SimpleRPG**!
-A classic 2D RPG game built in Unity using C# and vibrant sprites.
+A 2D RPG game built in Unity using C# and vibrant sprites taken from itch.io.
 Embark on an adventure, battle monsters, collect items, and explore a pixelated world! 🌍✨
 
 ---
@@ -11,9 +11,7 @@ Embark on an adventure, battle monsters, collect items, and explore a pixelated 
 - **2D Gameplay:** Retro-inspired movement and combat in a sprite-based world.
 - **Unity Engine:** Powered by Unity for smooth performance and cross-platform deployment.
 - **C# Scripting:** All core logic uses C# for flexibility and maintainability.
-- **Monsters & Items:** Fight enemies, level up, and gather loot! 🐉⚔️🧙‍♂️
-- **Exploration:** Discover secrets, dungeons, and new characters.
-- **Pixel Art:** Charming visuals crafted with care. 🎨
+- **Monsters & Items:** Fight enemies, and gather loot! 🐉⚔️🧙‍♂️
 
 ---
 
@@ -25,7 +23,7 @@ Embark on an adventure, battle monsters, collect items, and explore a pixelated 
    ```
 
 2. **Open in Unity:**
-   - Launch Unity Hub.
+   - Launch Unity Hub/Engine.
    - Click "Add", then select the cloned `SimpleRPG` folder.
    - Open the project.
 
@@ -45,30 +43,13 @@ Embark on an adventure, battle monsters, collect items, and explore a pixelated 
 
 ## 🛠️ Requirements
 
-- **Unity** (2020.3 or newer recommended)
+- **Unity** (6 or newer recommended)
 - **C#** (included with Unity)
 - **Windows/Mac/Linux** (Unity Editor support)
 
----
-
-## 🤝 Contributing
-
-Pull requests are welcome!
-Feel free to open issues for bugs or suggestions.
-Help us make SimpleRPG even better! 💡🛡️
-
----
-
-## 📜 License
-
-This project is licensed under the [MIT License](LICENSE).
-
----
 
 ## 👤 Author
 
 Created by [IcosagonZ](https://github.com/IcosagonZ)
-
----
 
 Enjoy your adventure! ⚔️🏆🌟
