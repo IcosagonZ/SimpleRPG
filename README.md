@@ -1,27 +1,74 @@
-# 🏃‍♂️ Parkour2D
+# 🕹️ SimpleRPG
 
-A simple 2D sidescrolling platformer project built in Unity using C#.
-
-## 🎮 Overview
-
-**Parkour2D** is a Unity project featuring classic platformer gameplay in a 2D environment. Designed for learning and experimentation, this game demonstrates core mechanics such as movement, jumping, and basic parkour elements implemented in C#.
-
-## ✨ Features
-
-- ⚡ Responsive 2D character movement
-- 🦘 Jumping and basic parkour mechanics
-- 🎥 Sidescrolling camera
-- 🧲 Unity 2D physics and collision
-- 🛠️ Easily extendable codebase for new mechanics
-
-## 🤝 Contributing
-
-Pull requests are welcome! Feel free to open issues or submit new features and improvements.
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+Welcome to **SimpleRPG**!
+A classic 2D RPG game built in Unity using C# and vibrant sprites.
+Embark on an adventure, battle monsters, collect items, and explore a pixelated world! 🌍✨
 
 ---
 
-*Created by [IcosagonZ](https://github.com/IcosagonZ)* 🚀
+## 🎮 Features
+
+- **2D Gameplay:** Retro-inspired movement and combat in a sprite-based world.
+- **Unity Engine:** Powered by Unity for smooth performance and cross-platform deployment.
+- **C# Scripting:** All core logic uses C# for flexibility and maintainability.
+- **Monsters & Items:** Fight enemies, level up, and gather loot! 🐉⚔️🧙‍♂️
+- **Exploration:** Discover secrets, dungeons, and new characters.
+- **Pixel Art:** Charming visuals crafted with care. 🎨
+
+---
+
+## 🚀 Getting Started
+
+1. **Clone the repo:**
+   ```
+   git clone https://github.com/IcosagonZ/SimpleRPG.git
+   ```
+
+2. **Open in Unity:**
+   - Launch Unity Hub.
+   - Click "Add", then select the cloned `SimpleRPG` folder.
+   - Open the project.
+
+3. **Play the Game:**
+   - Hit the ▶️ Play button in Unity to start your adventure!
+
+---
+
+## 📂 Project Structure
+
+- `Assets/` – Game scenes, scripts, sprites, and prefabs
+- `Scripts/` – C# logic for gameplay, player, monsters, and UI
+- `Sprites/` – Pixel art for characters, monsters, and items
+- `Scenes/` – Unity scenes for world, battles, and menus
+
+---
+
+## 🛠️ Requirements
+
+- **Unity** (2020.3 or newer recommended)
+- **C#** (included with Unity)
+- **Windows/Mac/Linux** (Unity Editor support)
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome!
+Feel free to open issues for bugs or suggestions.
+Help us make SimpleRPG even better! 💡🛡️
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 👤 Author
+
+Created by [IcosagonZ](https://github.com/IcosagonZ)
+
+---
+
+Enjoy your adventure! ⚔️🏆🌟
