@@ -4,8 +4,6 @@ Welcome to **SimpleRPG**!
 A 2D RPG game built in Unity using C# and vibrant sprites taken from itch.io.
 Embark on an adventure, battle monsters, collect items, and explore a pixelated world! 🌍✨
 
----
-
 ## 🎮 Features
 
 - **2D Gameplay:** Retro-inspired movement and combat in a sprite-based world.
@@ -13,7 +11,6 @@ Embark on an adventure, battle monsters, collect items, and explore a pixelated 
 - **C# Scripting:** All core logic uses C# for flexibility and maintainability.
 - **Monsters & Items:** Fight enemies, and gather loot! 🐉⚔️🧙‍♂️
 
----
 
 ## 🚀 Getting Started
 
@@ -30,7 +27,6 @@ Embark on an adventure, battle monsters, collect items, and explore a pixelated 
 3. **Play the Game:**
    - Hit the ▶️ Play button in Unity to start your adventure!
 
----
 
 ## 📂 Project Structure
 
@@ -39,7 +35,6 @@ Embark on an adventure, battle monsters, collect items, and explore a pixelated 
 - `Sprites/` – Pixel art for characters, monsters, and items
 - `Scenes/` – Unity scenes for world, battles, and menus
 
----
 
 ## 🛠️ Requirements
 
