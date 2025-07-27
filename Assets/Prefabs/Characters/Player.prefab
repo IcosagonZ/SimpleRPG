@@ -148,9 +148,9 @@ GameObject:
   - component: {fileID: 6017626962205347657}
   - component: {fileID: 539676986194156939}
   - component: {fileID: 5473764688648831883}
-  - component: {fileID: 5181338840534138699}
   - component: {fileID: 4958355987391622217}
   - component: {fileID: 8896810647472978151}
+  - component: {fileID: 8116118986348763385}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -251,28 +251,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5181338840534138699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5135293238806417359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7c47f0d52973cb0ab04601619d3aa29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 5473764688648831883}
-  playerSpriteRenderer: {fileID: 539676986194156939}
-  inputActionsAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  moveSpeed: 3
-  jumpForce: 5
-  groundTransform: {fileID: 6017626962205347657}
-  groundRadius: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!50 &4958355987391622217
 Rigidbody2D:
   serializedVersion: 5
@@ -337,3 +315,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.15, y: 0.22}
   m_Direction: 0
+--- !u!114 &8116118986348763385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5135293238806417359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7c47f0d52973cb0ab04601619d3aa29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 5473764688648831883}
+  playerSpriteRenderer: {fileID: 539676986194156939}
+  inputActionsAsset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  moveSpeed: 3
+  attackRange: 0.5
+  attackDamage: 10
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 64
