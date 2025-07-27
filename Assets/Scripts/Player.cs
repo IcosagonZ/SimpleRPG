@@ -17,22 +17,15 @@ public class Player : MonoBehaviour
     private Vector2 moveVector;
 
     public float moveSpeed = 3f;
-    public float jumpForce = 5f;
 
-    public Transform groundTransform;
-    public float groundRadius = 0.2f;
-    public LayerMask groundLayer;
-
-    private bool isGrounded;
     private bool isAttack;
 
     //private int logTimer=0;
     public float attackRange = 0.5f;
     public int attackDamage = 10;
     public LayerMask enemyLayers;
-    public Transform attackPoint;
 
-    private List<string> inventory = new List<string>();
+    public List<string> inventory = new List<string>();
 
     void Awake()
     {
@@ -70,13 +63,7 @@ public class Player : MonoBehaviour
             Attack();
         }
 
-        isGrounded = Physics2D.OverlapCircle(groundTransform.position, groundRadius, groundLayer);
-
-        if (jumpAction.triggered && isGrounded)
-        {
-            playerRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        }
-        //playerRigidBody.AddForce(moveVector, ForceMode2D.Impulse);
+        //playerRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
     void FixedUpdate()

@@ -3,6 +3,7 @@ using TMPro;
 
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using System;
 
 public class NPC : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class NPC : MonoBehaviour
     private int playerAvailableOptions = 0;
 
     private int questStage = 0;
+    private bool playerHasItems = false;
 
     void Awake()
     {
@@ -78,58 +80,80 @@ public class NPC : MonoBehaviour
                 {
                     if (playerSelectedOption == 0)
                     {
-                        npcDialogText.SetText("Nice, find me some carrots and wheat :D");
-
-                        dialogOptionsList.Clear();
-                        dialogOptionsList.Add("Where to find it ?");
-                        dialogOptionsList.Add("I will search everywhere");
-
-                        playerSelectedOption = 0;
-                        playerAvailableOptions = 2;
-                        updateOptionsList();
                         questStage++;
+                        updateQuestText(); //1
                     }
                     else
                     {
                         npcDialogText.SetText("Get lost >:(");
-                        playerOptionsText.SetText(":(");
+                        playerOptionsText.SetText(">*sad*");
                     }
                 }
                 else if (questStage == 1)
                 {
+                    questStage++;
                     if (playerSelectedOption == 0)
                     {
-                        npcDialogText.SetText("Go to that island on my left");
-
-                        dialogOptionsList.Clear();
-                        dialogOptionsList.Add("Okay");
-                        dialogOptionsList.Add("Is it safe ?");
-
-                        playerSelectedOption = 0;
-                        playerAvailableOptions = 2;
-                        updateOptionsList();
-
-                        questStage++;
+                        updateQuestText(); //2
                     }
                     else
                     {
-                        npcDialogText.SetText("I like your attitude");
-                        playerOptionsText.SetText("*smiles*");
+                        npcDialogText.SetText("Nice");
+                        playerOptionsText.SetText(">*smiles*");
                     }
                 }
                 else if (questStage == 2)
                 {
+                    questStage++;
+                    if (playerSelectedOption == 0)
+                    {
+                        npcDialogText.SetText("Have fun !!");
+                        playerOptionsText.SetText(">*smiles*");
+                    }
+                    else
+                    {
+                        npcDialogText.SetText("Ya, totally");
+                        playerOptionsText.SetText(">*worried*");
+                    }
+                }
+                else if (questStage == 3)
+                {
+                    questStage++;
                     if (playerSelectedOption == 0)
                     {
                         npcDialogText.SetText("Have fun !!");
 
-                        playerOptionsText.SetText("*smiles*");
+                        playerOptionsText.SetText(">*smiles*");
                     }
                     else
                     {
                         npcDialogText.SetText("Ya, totally");
 
-                        playerOptionsText.SetText("*smiles*");
+                        playerOptionsText.SetText(">*worried*");
+                    }
+                }
+                else if (questStage == 4)
+                {
+                    if (playerSelectedOption == 0)
+                    {
+                        checkPlayerInventory();
+                        if (playerHasItems)
+                        {
+                            npcDialogText.SetText("Thanks a lot");
+                            playerOptionsText.SetText(">*happy*");
+                            questStage++;
+                        }
+                        else
+                        {
+                            npcDialogText.SetText("Stop lying");
+                            playerOptionsText.SetText(">*sad*");
+                        }
+                    }
+                    else
+                    {
+                        npcDialogText.SetText("Okay");
+
+                        playerOptionsText.SetText(">Yeah");
                     }
                 }
             }
@@ -144,10 +168,24 @@ public class NPC : MonoBehaviour
         playerInArea = true;
 
         npcNameText.SetText("Dude");
+        updateQuestText();
+    }
 
+    void OnTriggerExit2D(Collider2D other)
+    {
+        //Debug.Log("Player gone :(");
+        if (dialogPanel != null)
+        {
+            dialogPanel.SetActive(false);
+        }
+        playerInArea = false;
+    }
+
+    void updateQuestText()
+    {
         if (questStage == 0)
         {
-            npcDialogText.SetText("Ay bro, can you help ?");
+            npcDialogText.SetText("Hey bro, can you help ?");
             dialogOptionsList.Clear();
             dialogOptionsList.Add("Yes");
             dialogOptionsList.Add("No");
@@ -156,16 +194,60 @@ public class NPC : MonoBehaviour
             playerAvailableOptions = 2;
             updateOptionsList();
         }
+        else if (questStage == 1)
+        {
+            npcDialogText.SetText("Nice, find me some carrots and wheat :D");
+
+            dialogOptionsList.Clear();
+            dialogOptionsList.Add("Where to find it ?");
+            dialogOptionsList.Add("I will search everywhere");
+
+            playerSelectedOption = 0;
+            playerAvailableOptions = 2;
+            updateOptionsList();
+        }
+        else if (questStage == 2)
+        {
+            npcDialogText.SetText("Go to that island on my left");
+
+            dialogOptionsList.Clear();
+            dialogOptionsList.Add("Okay");
+            dialogOptionsList.Add("Is it safe ?");
+
+            playerSelectedOption = 0;
+            playerAvailableOptions = 2;
+            updateOptionsList();
+        }
+        else if (questStage == 3)
+        {
+            npcDialogText.SetText("You have doubts ?");
+
+            dialogOptionsList.Clear();
+            dialogOptionsList.Add("No");
+            dialogOptionsList.Add("Is it safe ?");
+
+            playerSelectedOption = 0;
+            playerAvailableOptions = 2;
+            updateOptionsList();
+        }
+        else if (questStage == 4)
+        {
+            npcDialogText.SetText("Have you found what I asked ?");
+            dialogOptionsList.Clear();
+            dialogOptionsList.Add("Yes");
+            dialogOptionsList.Add("No");
+            playerSelectedOption = 0;
+            playerAvailableOptions = 2;
+            updateOptionsList();
+        }
+        else if (questStage == 5)
+        {
+            npcDialogText.SetText("Thanks for finding me the ingredients");
+            playerOptionsText.SetText(">Sure");
+        }
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        //Debug.Log("Player gone :(");
-        dialogPanel.SetActive(false);
-        playerInArea = false;
-    }
-
-    void updateOptionsList()
+    public void updateOptionsList()
     {
         int i = 0;
         string options = "> ";
@@ -182,5 +264,40 @@ public class NPC : MonoBehaviour
             i++;
         }
         playerOptionsText.SetText(options);
+    }
+
+    public void checkPlayerInventory()
+    {
+        int carrots = 0;
+        int wheats = 0;
+
+        Player player;
+        GameObject playerObject = GameObject.Find("Player");
+        List<string> playerInventory = new List<string>();
+
+        if (playerObject != null)
+        {
+            player = playerObject.GetComponent<Player>();
+            if (player != null)
+            {
+                playerInventory = player.inventory;
+                foreach (String item in playerInventory)
+                {
+                    if (item == "Carrot")
+                    {
+                        carrots++;
+                    }
+                    if (item == "Wheat")
+                    {
+                        wheats++;
+                    }
+                }
+            }
+        }
+
+        if (carrots>1 && wheats>1)
+        {
+            playerHasItems = true;
+        }
     }
 }
